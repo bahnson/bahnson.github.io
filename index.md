@@ -1,3 +1,7 @@
+---
+layout: home
+---
+
 # TODO ...
 - [x] look into markdown
 - [x] look into github pages
