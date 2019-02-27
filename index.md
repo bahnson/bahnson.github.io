@@ -1,11 +1,4 @@
 ---
 layout: home
-title: bahnson@github
 ---
 
-# TODO ...
-- [x] look into markdown
-- [x] look into github pages
-- [ ] say something nice, inspirational, professional to your visitors...
-- [ ] consider using Jekyll for bloging...
-{: style='list-style-type: none'}
