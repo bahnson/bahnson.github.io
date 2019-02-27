@@ -5,11 +5,13 @@ date:   2019-02-25 10:02:50 +0100
 tags:   [alexa, aws, serverless, python]
 ---
 
+In diesem Artikel werden wir uns einen eigenen Alexa-Skill anlegen und auf unserem Echo einspielen. 
+
 ## Voraussetzungen
 
 - Amazon Account
-- Amazon Echo Device
-- AWS account
+- Amazon Echo zuhause
+- [AWS Account] \(kostenlos anmelden)
 
 ## Skill in ASK Konsole erstellen
 
@@ -125,7 +127,7 @@ Bei "Amazon Alexa" melden wir uns mit unserem Standard-Amazon-Account an. Hier w
 Jetzt können wir zu unserem Echo gehen und den Dialog starten. "Alexa, öffne meinen coolen Skill und sag was schönes".
 Viel Spaß!
 
-
+[AWS Account]: aws.amazon.com
 [ASK Development Console]: https://developer.amazon.com/alexa/console/ask
 [AWS-Konsole]: https://console.aws.amazon.com
 [Code aus meinem Repository]: https://github.com/bahnson/my-first-alexa-skill/blob/master/lambda_function.py
