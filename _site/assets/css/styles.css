@@ -1,0 +1,6 @@
+div.tag {
+  display: inline-block;
+  border: 1px solid grey;
+  border-radius: 5px;
+  font-size: 9pt;
+  padding: 3px; }

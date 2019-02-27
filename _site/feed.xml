@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+<generator uri="http://jekyllrb.com" version="3.8.5">Jekyll</generator>
+<link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" />
+<link href="http://localhost:4000/" rel="alternate" type="text/html" />
+<updated>2019-02-27T21:57:29+01:00</updated>
+<id>http://localhost:4000/</id>
+<subtitle>GitHub page of Christopher Bahn.  </subtitle>
+<entry>
+<title>Alexa Skill mit ASK und AWS Lambda</title>
+<link href="http://localhost:4000/2019/02/25/building-an-alexa-skill.html" rel="alternate" type="text/html" title="Alexa Skill mit ASK und AWS Lambda" />
+<published>2019-02-25T10:02:50+01:00</published>
+<updated>2019-02-25T10:02:50+01:00</updated>
+<id>http://localhost:4000/2019/02/25/building-an-alexa-skill</id>
+<content type="html" xml:base="http://localhost:4000/2019/02/25/building-an-alexa-skill.html">&lt;h2 id=&quot;voraussetzungen&quot;&gt;Voraussetzungen&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Amazon Account&lt;/li&gt;
+  &lt;li&gt;Amazon Echo Device&lt;/li&gt;
+  &lt;li&gt;AWS account&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;skill-in-ask-konsole-erstellen&quot;&gt;Skill in ASK Konsole erstellen&lt;/h2&gt;
+
+&lt;p&gt;Die &lt;a href=&quot;https://developer.amazon.com/alexa/console/ask&quot;&gt;ASK Development Console&lt;/a&gt; öffnen (Anmeldung mit Amazon-Login) und “Create Skill” klicken. Den Namen für den Skill eingeben, in unserem Fall “Mein cooler Skill”. Die Optionen “Custom” und “Self Hosted” anwählen und “Create Skill” klicken&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/img/blog/create-skill-de.png&quot; alt=&quot;screenie&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Das führt uns zur Entwickleransicht unseres Skills. Hier im Menü links “Invocation” anwählen und unter “Skill Invocation Name” die Wörter eingeben, mit denen wir unseren Skill sprachlich aktivieren wollen. In unserem Fall ist das “meinen coolen skill”, weil wir den Skill später mit “Alexa, öffne meinen coolen Skill” aktivieren wollen. Anschließend speichern wir mit “Save Model” und tun dies künftig nach jeder Änderung.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/img/blog/set-invocation-name-de.png&quot; alt=&quot;screenie&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Jetzt definieren wir die Sprachäußerungen, die unser Skill nach seiner Aktivierung verstehen können soll. Dazu im Menü links bei Intents auf “+ Add” klicken und unter “Create custom intent” einen internen Namen eingeben und auf “Create Custom Intent” klicken. In unserem Fall ist der Name “SaySomethingNiceIntent”, denn wir wollen, dass unser Skill uns etwas schönes, erheiterndes sagt.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/img/blog/create-intent-de.png&quot; alt=&quot;screenie&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Anschließend können wir die Sprachäußerungen eingeben, die unser Skill verstehen können soll. Unser Skill soll etwas schönes sagen und uns erheitern, indem er einfach ein zufällig gewähltes Wort aus einer Liste schöner deutscher Wörter verliest. Die entsprechenden Sprachkommandos geben wir wie folgt an. Abschließend sollten wir mit “Save Model” die Änderungen speichern.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/img/blog/create-utterances-de.png&quot; alt=&quot;screenie&quot; /&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;backend-service-mit-aws-lambda-erstellen&quot;&gt;Backend-Service mit AWS Lambda erstellen&lt;/h2&gt;
+
+&lt;p&gt;Jetzt erstellen wir einen Backend-Service, der die von unserem Skill aufgezeichneten Sprachäußerungen entgegennimmt und die Antworten generiert. Dazu lassen wir den Tab mit der ASK Console geöffnet und loggen uns in einem neuen Tab bei unserer &lt;a href=&quot;https://console.aws.amazon.com&quot;&gt;AWS-Konsole&lt;/a&gt; ein. Dort suchen wir nach “Lambda” und wechseln dann zur Lambda Management Console. Falls “Lambda” nicht gefunden werden kann, muss ggf. oben rechts eine andere Region gewählt werden (bei mir EU Ireland).&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/img/blog/open-lambda-console.png&quot; alt=&quot;screenie&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;In der Lambda Console klicken wir auf “Funktion erstellen”, wählen dann die Option “Ohne Vorgabe”, wählen einen Namen (“mein_cooler_skill”, Name ist nicht wichtig für Funktion) und die Laufzeit-Umgebung “Python 3.7” (oder eben die höchste akt. verfügbare Version).&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/img/blog/create-lambda.png&quot; alt=&quot;screenie&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/img/blog/create-lambda-2.png&quot; alt=&quot;screenie&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Für unsere Funktion müssen wir noch eine Rolle definieren, für die wir noch spezielle Berechtigungen festlegen könnten. In unserem Fall reicht es, eine neue Rolle mit Standard-Berechtigungen zu definieren.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/img/blog/create-role.png&quot; alt=&quot;screenie&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Wir nennen die neue Rolle “alexa” und bestätigen mit “Erlauben”.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/img/blog/create-role-2.png&quot; alt=&quot;screenie&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Zurück bei AWS Lambda wählen wir die neue Rolle aus und legen mit “Funktion erstellen” unsere Funktion an.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/img/blog/create-lambda-3.png&quot; alt=&quot;screenie&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;In der Entwickler-Ansicht unserer neuen Funktion scrollen wir nach unten und ersetzen den Code im Editor mit dem &lt;a href=&quot;https://github.com/bahnson/my-first-alexa-skill/blob/master/lambda_function.py&quot;&gt;Code aus meinem Repository&lt;/a&gt;. Anschließend speichern wir die Datei im Editor&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/img/blog/insert-lambda-code.png&quot; alt=&quot;screenie&quot; /&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;backend-service-mit-skill-verknüpfen&quot;&gt;Backend-Service mit Skill verknüpfen&lt;/h2&gt;
+
+&lt;p&gt;In der Lambda Console kopieren wir den ARN unserer Lambda Funktion(oben rechts), wechseln zum noch geöffneten Tab mit der ASK Console unseres Skills, wählen links “Endpoint” an, selektieren den Endpoint-Typ “AWS Lambda ARN”, fügen den Lamda ARN in das Feld “Default Region” ein und klicken “Save Endpoint”.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/img/blog/connect-lambda-with-skill.png&quot; alt=&quot;screenie&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/img/blog/connect-lambda-with-skill-2.png&quot; alt=&quot;screenie&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Dann kopieren wir in der ASK Console die ID unseres Skills (Feld oberhalb der Lambda ARN), wechseln zum noch geöffneten Tab mit der Lambda Console, fügen links einen Auslöser “Alexa Skills Kit” hinzu, tragen unten unter Qualifikations-ID die kopierte Skill-ID ein, klicken dann auf “Hinzufügen” und oben auf “Speichern”.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/img/blog/connect-lambda-with-skill-3.png&quot; alt=&quot;screenie&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/img/blog/connect-lambda-with-skill-4.png&quot; alt=&quot;screenie&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/img/blog/connect-lambda-with-skill-5.png&quot; alt=&quot;screenie&quot; /&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;skill-testen&quot;&gt;Skill testen&lt;/h2&gt;
+
+&lt;p&gt;Jetzt können wir unseren neuen Skill online testen. In der ASK Console wechseln wir vom Tab “Build” zum Tab “Test”, wo wir zum Test unseres Skills einen Dialog mit Alexa führen können.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/img/blog/test-skill.png&quot; alt=&quot;screenie&quot; /&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;skill-auf-unserem-amazon-echo-gerät-einspielen&quot;&gt;Skill auf unserem Amazon Echo Gerät einspielen&lt;/h2&gt;
+
+&lt;p&gt;Wir wechseln in der ASK Console in den Tab “Distribution”. Unter “Skill Preview” &amp;gt; “German” geben wir an:&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;einen öffentlichen Namen&lt;/li&gt;
+  &lt;li&gt;eine Kurzbeschreibung ()&lt;/li&gt;
+  &lt;li&gt;eine detaillierte Beschreibung&lt;/li&gt;
+  &lt;li&gt;die Beispielsätze, die unser Skill versteht&lt;/li&gt;
+  &lt;li&gt;großes und kleines Skill-Icon, hier das &lt;a href=&quot;https://github.com/bahnson/my-first-alexa-skill/blob/master/skill-icon.png&quot;&gt;Icon aus meinem Repository&lt;/a&gt; auf den Desktop und dann in beide Felder ziehen&lt;/li&gt;
+  &lt;li&gt;eine Kategorie (Education &amp;amp; Reference)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Anschließend klicken wir auf “Save and continue”.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/img/blog/distribute-skill.png&quot; alt=&quot;screenie&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/img/blog/distribute-skill-2.png&quot; alt=&quot;screenie&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/img/blog/distribute-skill-3.png&quot; alt=&quot;screenie&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Unter “Skill Preview” &amp;gt; “Privacy &amp;amp; Compliance” füllen wir das Formular wie folgt aus und bestätigen dann mit “Save and continue”.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/img/blog/distribute-skill-4.png&quot; alt=&quot;screenie&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Unter “Skill Preview” &amp;gt; “Availability” wählen wir “Public”. Dann wählen wir “Beta Test”, um unseren Skill einfach privat auf unserem Echo testen zu können. Unter “Beta Test Administrator” tragen wir unsere E-Mail-Adresse ein und bestätigen mit “Add”.
+Dann setzen wir unter “Manage Access to your Skill Beta Test” das Häkchen für “EMAIL ADDRESS”, tragen unter “Enter tester email addresses” ebenfalls unsere E-Mail-Adresse ein, bestätigen wieder mit “Add” und clicken anschließend auf “Enable Beta Testing”.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/img/blog/distribute-skill-5.png&quot; alt=&quot;screenie&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/img/blog/distribute-skill-6.png&quot; alt=&quot;screenie&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/img/blog/distribute-skill-7.png&quot; alt=&quot;screenie&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Als Tester haben wir jetzt eine E-Mail erhalten und folgen dem ersten Link in der Mail, um unseren Skill auf unserem Echo zu aktivieren.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/img/blog/distribute-skill-8.png&quot; alt=&quot;screenie&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Bei “Amazon Alexa” melden wir uns mit unserem Standard-Amazon-Account an. Hier werden wir entweder gleich mit einer Nachricht zur Test-Teilnahme begrüßt, oder finden “Mein cooler Skill” unter “Skills” &amp;gt; “Ihre Skills” &amp;gt; “Entwicklerskills” und können den Skill so auf unserem Gerät aktivieren.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/img/blog/distribute-skill-9.png&quot; alt=&quot;screenie&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/img/blog/distribute-skill-10.png&quot; alt=&quot;screenie&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Jetzt können wir zu unserem Echo gehen und den Dialog starten. “Alexa, öffne meinen coolen Skill und sag was schönes”.
+Viel Spaß!&lt;/p&gt;
+
+</content>
+<category term="alexa" />
+<category term="aws" />
+<category term="serverless" />
+<category term="python" />
+<summary>Voraussetzungen</summary>
+</entry>
+<entry>
+<title>Welcome to Jekyll!</title>
+<link href="http://localhost:4000/jekyll/update/2019/02/22/welcome-to-jekyll.html" rel="alternate" type="text/html" title="Welcome to Jekyll!" />
+<published>2019-02-22T23:02:50+01:00</published>
+<updated>2019-02-22T23:02:50+01:00</updated>
+<id>http://localhost:4000/jekyll/update/2019/02/22/welcome-to-jekyll</id>
+<content type="html" xml:base="http://localhost:4000/jekyll/update/2019/02/22/welcome-to-jekyll.html">&lt;p&gt;You’ll find this post in your &lt;code class=&quot;highlighter-rouge&quot;&gt;_posts&lt;/code&gt; directory. Go ahead and edit it and re-build the site to see your changes. You can rebuild the site in many different ways, but the most common way is to run &lt;code class=&quot;highlighter-rouge&quot;&gt;jekyll serve&lt;/code&gt;, which launches a web server and auto-regenerates your site when a file is updated.&lt;/p&gt;
+
+&lt;p&gt;To add new posts, simply add a file in the &lt;code class=&quot;highlighter-rouge&quot;&gt;_posts&lt;/code&gt; directory that follows the convention &lt;code class=&quot;highlighter-rouge&quot;&gt;YYYY-MM-DD-name-of-post.ext&lt;/code&gt; and includes the necessary front matter. Take a look at the source for this post to get an idea about how it works.&lt;/p&gt;
+
+&lt;p&gt;Jekyll also offers powerful support for code snippets:&lt;/p&gt;
+
+&lt;p&gt;{% highlight ruby %}
+def print_hi(name)
+  puts “Hi, #{name}”
+end
+print_hi(‘Tom’)
+#=&amp;gt; prints ‘Hi, Tom’ to STDOUT.
+{% endhighlight %}&lt;/p&gt;
+
+&lt;p&gt;Check out the &lt;a href=&quot;https://jekyllrb.com/docs/home&quot;&gt;Jekyll docs&lt;/a&gt; for more info on how to get the most out of Jekyll. File all bugs/feature requests at &lt;a href=&quot;https://github.com/jekyll/jekyll&quot;&gt;Jekyll’s GitHub repo&lt;/a&gt;. If you have questions, you can ask them on &lt;a href=&quot;https://talk.jekyllrb.com/&quot;&gt;Jekyll Talk&lt;/a&gt;.&lt;/p&gt;
+
+</content>
+<summary>You’ll find this post in your _posts directory. Go ahead and edit it and re-build the site to see your changes. You can rebuild the site in many different ways, but the most common way is to run jekyll serve, which launches a web server and auto-regenerates your site when a file is updated.</summary>
+</entry>
+</feed>
