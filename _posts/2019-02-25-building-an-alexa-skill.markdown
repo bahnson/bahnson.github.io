@@ -5,7 +5,8 @@ date:   2019-02-25 10:02:50 +0100
 tags:   [alexa, aws, serverless, python]
 ---
 
-In diesem Artikel werden wir uns einen eigenen Alexa-Skill anlegen und auf unserem Echo einspielen. 
+In diesem Artikel werden wir Schritt für Schritt einen eigenen Alexa-Skill anlegen und auf unserem Echo einspielen. Der Skill wird uns erheitern, in dem er uns ein zufällig gewähltes Wort aus einer Liste schöner blumiger Worte vorliest. 
+Der Artikel basiert auf dem [You Tube Video von Keith Galli], und auch der .
 
 ## Voraussetzungen
 
@@ -63,7 +64,7 @@ In der Entwickler-Ansicht unserer neuen Funktion scrollen wir nach unten und ers
 
 ## Backend-Service mit Skill verknüpfen
 
-In der Lambda Console kopieren wir den ARN unserer Lambda Funktion(oben rechts), wechseln zum noch geöffneten Tab mit der ASK Console unseres Skills, wählen links "Endpoint" an, selektieren den Endpoint-Typ "AWS Lambda ARN", fügen den Lamda ARN in das Feld "Default Region" ein und klicken "Save Endpoint". 
+In der Lambda Console kopieren wir den Amazon Resource Name(ARN) unserer Lambda Funktion(oben rechts), wechseln zum noch geöffneten Tab mit der ASK Console unseres Skills, wählen links "Endpoint" an, selektieren den Endpoint-Typ "AWS Lambda ARN", fügen den Lamda ARN in das Feld "Default Region" ein und klicken "Save Endpoint". 
 
 ![screenie](/assets/img/blog/connect-lambda-with-skill.png)
 
@@ -132,4 +133,4 @@ Viel Spaß!
 [AWS-Konsole]: https://console.aws.amazon.com
 [Code aus meinem Repository]: https://github.com/bahnson/my-first-alexa-skill/blob/master/lambda_function.py
 [Icon aus meinem Repository]: https://github.com/bahnson/my-first-alexa-skill/blob/master/skill-icon.png
-[How to Program a Conversation with Alexa! (Python & AWS Lambda) - Part 1]: https://www.youtube.com/watch?v=sj7NqS7yytw
+[You Tube Video von Keith Galli]: https://www.youtube.com/watch?v=sj7NqS7yytw
