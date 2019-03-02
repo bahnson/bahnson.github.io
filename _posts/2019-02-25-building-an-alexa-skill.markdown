@@ -5,8 +5,8 @@ date:   2019-02-25 10:02:50 +0100
 tags:   [alexa, aws, serverless, python]
 ---
 
-In diesem Artikel werden wir Schritt für Schritt einen eigenen Alexa-Skill anlegen und auf unserem Echo einspielen. Der Skill wird uns erheitern, in dem er uns ein zufällig gewähltes Wort aus einer Liste schöner blumiger Worte vorliest. 
-Der Artikel basiert auf dem [You Tube Video von Keith Galli], und auch der .
+In diesem Artikel werden wir Schritt für Schritt einen eigenen Alexa-Skill bauen und auf unserem Echo einspielen. Der Skill wird uns erheitern, in dem er uns ein zufällig gewähltes Wort aus einer Liste schöner blumiger Worte vorliest.  Unsere Werkzeuge sind alle online und kostenlos. Auch ohne Programmiererfahrung kann man später die Liste schöner Worte im Code-Schnipsel ausfindig machen und erweitern. Mit ein bisschen Erfahrung in python kann man auf Basis des Skills jedoch sehr gut eigene Experimente starten.
+Der Artikel basiert auf dem [You Tube Video von Keith Galli]. Auch der python Code, welcher unsere Sprachkommandos empfängt und Alexa's Antworten generiert, ist zum Großteil eine Kopie seines Codes.
 
 ## Voraussetzungen
 
