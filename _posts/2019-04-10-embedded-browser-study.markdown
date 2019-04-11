@@ -6,12 +6,17 @@ tags:   [chromium,cef,electron,node]
 
 
 
-## Chromium Embedded Framework (CEF)
+## Chromium Embedded Framework (CEF) for C++
 
-Getting started is quite straightforward following the intructions on [CEF project page]. Just clone the [CEF project on GitHub] into a local directory (or fork it and clone your own repo) and then run [CMake] to generate the project files for your IDE of choice. My IDE of choice for C++ is JetBrain's [CLion] \("Intellij for C++"), which has built-in CMake support. Just opening the directory with the cloned repo in CLion started the CMake generator, downloaded the CEF dependencies, and allowed me to run examples/minimal straight away. Nice! 
+Getting started is quite straightforward following the intructions on [CEF project page]. Just clone the [CEF project on GitHub] into a local directory (or fork it and clone your own repo) and then run [CMake] to generate the project files for your platform and IDE of choice. In my case, the platform is Debian Linux (Ubuntu) on commodity x64 hardware (acer swift-3 notebook) and the IDE of choice is JetBrain's [CLion] \("Intellij for C++"), which has built-in CMake support. Just opening the directory with the cloned repo in CLion started the CMake generator, downloaded the CEF dependencies, and allowed me to run examples/minimal straight away. Nice! 
 
 ## Node.js & Electron
 
+An Electron app is a node.js app 
+
+```bash
+sudo apt install nodejs npm
+´´´
 
 
 ## Qt WebEngine
