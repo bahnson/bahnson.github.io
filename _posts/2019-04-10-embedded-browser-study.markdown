@@ -16,7 +16,7 @@ An Electron app is a node.js app
 
 ```bash
 sudo apt install nodejs npm
-´´´
+```
 
 
 ## Qt WebEngine
