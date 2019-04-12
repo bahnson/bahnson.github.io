@@ -4,8 +4,6 @@ title:  "Embedded Browser Study"
 tags:   [chromium,cef,electron,node]
 ---
 
-
-
 ## Chromium Embedded Framework (CEF) for C++
 
 The [Chromium Embedded Framework] allows embedding Chromium (core of the Chrome browser) in own applications, that may themselves be written in any of the "common" application programming languages.
@@ -41,6 +39,6 @@ Valued colleagues told me they use Qt WebEngine in their product, so this might 
 [Fiber blog]: https://kver.wordpress.com/2015/08/05/fiber-update-webengine-vs-cef/
 [Electron]: https://en.wikipedia.org/wiki/Electron_(software_framework)
 [Electron's bad parts]: https://hackernoon.com/electron-the-bad-parts-2b710c491547
-[Zeke's talk on Electron]: https://www.youtube.com/watch?v=FNHBfN8c32U&t=1948s
+[Zeke's talk about Electron]: https://www.youtube.com/watch?v=FNHBfN8c32U&t=1948s
 
 
