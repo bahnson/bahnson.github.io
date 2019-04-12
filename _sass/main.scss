@@ -8,19 +8,16 @@ div.tag {
 .inner {
 	max-width: 800px;
 }
-
 #profile_pic {
 	position: absolute;
 	top:  0px;
 	left: 430px;
-	/*position: fixed;
-	z-index: 10;
-	top: 40px;
-	right: 50px;
-	*/
 	width: 160px;
 	height: 165px;
 	border-radius: 50%;
 	border: none;
 	box-shadow: none;
+}
+#forkme_banner {
+	box-shadow: 0 5 5px rgba(0, 0, 0, 0.75);
 }
