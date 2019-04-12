@@ -10,9 +10,14 @@ div.tag {
 }
 
 #profile_pic {
-	position: fixed;
+	position: absolute;
+	top: 30px;
+	right: 10px;
+	z-index: 10;
+	/*position: fixed;
 	top: 40px;
 	right: 50px;
+	*/
 	width: 125px;
 	height: 130px;
 	border-radius: 50%;
