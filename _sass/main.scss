@@ -10,8 +10,9 @@ div.tag {
 }
 
 #profile_pic {
-	display: inline-block;
-	float: left;
+	position: fixed;
+	top: 40px;
+	right: 50px;
 	width: 125px;
 	height: 130px;
 	border-radius: 50%;
