@@ -18,14 +18,44 @@ include_directories(${CMAKE_SOURCE_DIR}/third_party/cef/cef_binary_3.3538.1852.g
 
 ## Node.js & Electron
 
-Electron allows embedding Chromium in node.js applications. [Zeke's talk about Electron] gives an excellent introduction to Electron, and its roots and history.
+Electron allows embedding Chromium in node.js applications. [Zeke's talk about Electron] gives an excellent introduction to Electron, and its roots and history. I'm new to Electron, and the whole node ecosystem, respectively. The [First Electron App Tutorial], however, got me started quickly. For my own future reference, getting node and creating an Electron app happend as follows.
 
 ```bash
 sudo apt install nodejs npm
 mkdir -p path/to/app && cd path/to/app
+npm init # with entry point: main.js
+echo "console.log('hello')" > main.js
+node .
+> hello
+npm install --save-dev electron
+```
+
+This initialized a runnable node app and added electron as a yet unused dependency. For further editing, I decided to check out [Visual Studio Code], which grew in popularity among web DEVs in the last years, and happens to be an Electron app itself. I just installed it via Ubuntu's Software Center. `code /path/to/app` then opens the Electron app in VS Code. 
+
+Using the following code in main.js will open an Electron browser window:  
+
+```javascript
+const { app, BrowserWindow } = require('electron')
+
+let win;
+
+app.on('ready', () => {
+    win = new BrowserWindow()
+    win.loadURL('https://en.wikipedia.org/wiki/Electron_(software_framework)')
+})
+```
+
+For running the node app as an actual Electron app, the appropriate start script must be set in package.json: 
+
+```javascript
+...
+"scripts": {
+     "start": "electron ."
+  },
 ...
 ```
 
+The app can now be run with `npm start` in the app directory. VS Code's terminal (Ctrl+Shift+\`) comes in handy here.
 
 ## Qt WebEngine
 
@@ -40,5 +70,5 @@ Valued colleagues told me they use Qt WebEngine in their product, so this might 
 [Electron]: https://en.wikipedia.org/wiki/Electron_(software_framework)
 [Electron's bad parts]: https://hackernoon.com/electron-the-bad-parts-2b710c491547
 [Zeke's talk about Electron]: https://www.youtube.com/watch?v=FNHBfN8c32U&t=1948s
-
-
+[First Electron App Tutorial]: https://electronjs.org/docs/tutorial/first-app
+[Visual Studio Code]: https://en.wikipedia.org/wiki/Visual_Studio_Code
