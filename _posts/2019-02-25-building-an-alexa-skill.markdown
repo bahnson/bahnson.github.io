@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "Alexa Skill mit ASK und AWS Lambda \*German"
+title:  "Alexa Skill mit ASK und AWS Lambda (German)"
 date:   2019-02-25 10:02:50 +0100
 tags:   [alexa, aws, serverless, python]
 ---
