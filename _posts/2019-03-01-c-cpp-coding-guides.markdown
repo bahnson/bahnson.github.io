@@ -1,16 +1,15 @@
 ---
 layout: post
-title:  "C/C++ Coding Guides"
+title:  "Development Guidelines for our future C and C++ projects"
 date:   2019-03-01 10:02:50 +0100
 tags:   [c,c++,style,guide]
 ---
-
-C/C++ coding guideline reference for my current project.
 
 ## Practices
 * Unit Testing/TDD: Any automated tests are better than none. Ideally TDD is used. Remember that automated tests are code that has to be maintained, and that the subjects under test are dependencies. Try to reduce coupling between tests and test subjects. Test externally observable behavior and not the internals of the implementation. Don't get obsessed with metrics.
 * Code Reviews: Perform code reviews. Don't do it once right before code freeze, don't do it buraucratically, filling out forms for documenting QA measures. Do it continuously as part of pair programming, fostering a common understanding of the code base.
 * Pair programming: Encourage pair programming. This is NOT just two DEVs doing the work of one. It's a constant feedback loop, it creates a deeper common understanding through dialog and discussion, it's energizing and it's fun. Do it.
+* Use a Version Control System
 
 ## Clean Code, Maintainability
 
@@ -24,17 +23,17 @@ C/C++ coding guideline reference for my current project.
 ## Documentation
 
 * Document the principles of design (essential classes/entities and their relationships) 
-* Document the principles of the architecture, e.g. which components run where and talk to whom using which channels. 
-* Document the essential control flows, e.g. startup and command/event processing
-* Don't get obsessed with UML
-* Don't get obsessed with doc generators. Write meaningful code and use this code to discuss and reason about a program
+* Document the principles of the architecture, e.g. which components run where and talk to whom using which channels. Component, Deployment, Sequence diagrams are applicable.
+* Describe the essential control flows, e.g. startup and command/event processing. Sequence diagrams are applicable
+* Don't get obsessed with UML details. Diagrams are means of communication. Overloaded and overly complicated diagrams impede communication.
+* Don't get obsessed with doc generators. Write meaningful code and use this code to discuss and reason about a program.
 
 ## Safety & Security
 
 * Perform input validation on component boundaries where IPC or File IO happens
 * Don't rely on client-side input validation
 * Know about implicit type conversions and avoid them
-* More to come
+* More to come here ...
 
 ## Static Code Analysis
 
