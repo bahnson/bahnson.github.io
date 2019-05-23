@@ -47,6 +47,7 @@ tags:   [c,c++,style,guide]
 ## References
 
 * [C++ Core Guidelines](https://isocpp.github.io/CppCoreGuidelines/CppCoreGuidelines.html)
+* [heise.de - Modernes C++](https://www.heise.de/developer/ModernesCplusplus-3691794.html)
 * [SEI CERT C++ Coding Standard](https://wiki.sei.cmu.edu/confluence/pages/viewpage.action?pageId=88046682)
 * [OWASP](https://www.owasp.org/index.php/OWASP_Secure_Coding_Practices_-_Quick_Reference_Guide)
 * [Seastars Clean Codebase](https://github.com/scylladb/seastar)
@@ -54,6 +55,5 @@ tags:   [c,c++,style,guide]
 
 
 [C++ Core Guidelines]: https://isocpp.github.io/CppCoreGuidelines/CppCoreGuidelines
-[heise.de - Modernes C++]: https://www.heise.de/developer/ModernesCplusplus-3691794.html
 [C is obsolete]: https://www.youtube.com/watch?v=KlPC3O1DVcg
 [Stroustroups FAQ]: http://stroustrup.com/bs_faq.html
