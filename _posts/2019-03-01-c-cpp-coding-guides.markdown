@@ -54,5 +54,6 @@ tags:   [c,c++,style,guide]
 
 
 [C++ Core Guidelines]: https://isocpp.github.io/CppCoreGuidelines/CppCoreGuidelines
+[heise.de - Modernes C++]: https://www.heise.de/developer/ModernesCplusplus-3691794.html
 [C is obsolete]: https://www.youtube.com/watch?v=KlPC3O1DVcg
 [Stroustroups FAQ]: http://stroustrup.com/bs_faq.html
