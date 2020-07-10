@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "Development Guidelines for our future C and C++ projects"
+title:  "Thoughts on Reasonable Guidelines for Future C and C++ Projects"
 date:   2019-03-01 10:02:50 +0100
 tags:   [c,c++,style,guide]
 ---
